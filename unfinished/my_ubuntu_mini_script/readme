@@ -1,0 +1,16 @@
+This script is supposed to run on a newly installed ubuntu-mini,
+in order to configure the distro to my liking.
+This script should do steps:
+
+1) install software from APT
+2) configure openbox
+    2.1) autostart
+    2.2) rc.xml
+    2.3) right-click menu 
+3) configure xfce4-panel
+4) theming
+    4.1) dark theme
+    4.2) icon pack
+    4.3) wallpaper
+5) configure libreoffice
+6) configure vim

@@ -1,0 +1,13 @@
+#!/bin/bash
+install_command= "apt install"
+rederer= xorg
+wm= openbox
+tui_utils= "vim network-manager pulseaudio"
+xfce_env= "xfce4-terminal xfce4-taskmanager xfce4-panel xfce4-clipman xfce4-screenshooter xfce4-battery-plugin xfce4-whiskermenu-plugin xfce4-notifyd mousepad ristretto"
+office_suite= "libreoffice evince lyx"
+media= "$office_suite audacious vlc fbreader"
+networking= "transmission firefox"
+app_suite= "$xfce_env $media $networking compton suckless-tools pcmanfm qalculate"
+gui_utils= "$app_suite lxpolkit gksu xbacklight pavucontrol gmrun gparted file-roller vim-gtk synaptic"
+
+$install_command $tui_utils $renderer $wm $gui_utils $media $networking

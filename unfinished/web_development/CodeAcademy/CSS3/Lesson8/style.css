@@ -1,0 +1,19 @@
+.grid {
+  display: grid;
+  border: 2px blue solid;
+  height: 500px;
+  width: 500px;
+  grid-template: 200px 200px / 25% 25% 2fr 1fr;
+  grid-gap: 10px  15px;
+}
+
+.a{
+  grid-area: 1 / 1 / span 2 / span 2;
+}
+
+.box {
+  background-color: beige;
+  color: black;
+  border-radius: 5px;
+  border: 2px dodgerblue solid;
+}

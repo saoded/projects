@@ -1,0 +1,16 @@
+~run
+compile
+run
+console
+run
+compile
+run
+compile
+run
+test
+compile
+packageSubmission
+compile
+run
+test
+exit
