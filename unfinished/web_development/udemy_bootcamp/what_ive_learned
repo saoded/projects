@@ -1,0 +1,91 @@
+Quick Reference
+
+PART 1: HTML
+boilerplate (html:5)
+<img src="local/path">
+<img src="http://url">
+<a href="http://url">click here</a>
+<table>
+  <thead>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<form>
+  <label>
+    <input id="input_id" name="displayed_query" type="many_options" required>
+    <!--input type="password" name="password" pattern=".{5,10}" title="Must contain 5-10 characters" required-->
+  </label>
+  <label for="input_id"></label>
+  <select id="input_id">
+    <option selected disabled hidden>default text</option>
+    <option value="alternative_value">actual option</option>
+  </select>
+</form>
+
+
+PART 2: CSS
+in HTML:
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
+
+selector {
+  property: value;
+}
+.class{
+  backgroud: color; /* rgba(,,,) #FFFFFF hsl(,,) */
+}
+#id{
+  margin: vertical auto; /* px em rem % */
+}
+parent_sel sel{
+  border: width type color;
+}
+sel[attribute="value"]{ /* input[type="text"]) */
+  padding: top bottom left right;
+}
+*{ /* all */
+  text-transform: upeercase;  
+}
+sel:nth_of_type(n){}
+:checked{}
+:link{}
+:visited{}
+sel:hover{}
+sel:not(sel){} /* exclude classes/ids */
+sel::pseudo_elem{}
+
+directly_prev_sel + sel{
+  float: left;
+}
+direct_parent_sel > sel{}
+prev_sel ~ sel{}
+
+sel[href*="website"]{}
+
+/* custom hr styles */
+
+PART 3: BOOTSTRAP
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<!--link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"-->
+
+.container
+
+.form-group (spacing)
+.form-control (for grid)
+.inline-form
+
+.navbar
