@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <h1>Register</h1>
+  <form>
+    <div><label>
+      First Name:
+      <input name="name" required>
+    </label></div>
+    <div><label>
+      Last Name:
+      <input name="surname" required>
+    </label></div>
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option selected disabled hidden>You don't have to choose</option>
+        <option>None</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option value="yNotBoth">#whyNotBoth</option>
+        <option>Sparkles</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div><label>
+      Email:
+      <input type="email" name="email" placeholder="your email" required>
+    </label></div>
+    <div><label>
+      Password:
+      <input type="password" name="password" pattern=".{5,10}" title="Must contain 5-10 characters" required>
+    </label></div>
+    <div><label>
+      Birthday:
+      <input type="date" name="bday">
+    </label></div>
+    <div><label>
+      <input type="checkbox" name="agreement" required>
+      I agree to the term and conditions
+    </label></div>
+    <input type="submit">
+  </form>
+</body>
+</html>

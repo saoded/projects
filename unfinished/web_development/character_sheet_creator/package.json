@@ -1,0 +1,15 @@
+{
+  "name": "character_sheet_creator",
+  "version": "1.0.0",
+  "description": "D&D 5e character sheets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oded Sayar",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}

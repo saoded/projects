@@ -1,0 +1,32 @@
+body{
+  border: 20px solid #bdc3c7;
+  margin: 2rem 15%;
+}
+
+.post{
+  margin: 1rem;
+}
+
+.date{
+  color: #3498db;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .3rem;
+}
+
+h2{
+  font-family: "Dancing Script", cursive;
+  color: #2c3e50;
+}
+
+.abstract{
+  font-family: "Dancing Script", cursive;
+  border-left: #bdc3c7 solid 3px;
+  padding-left: .2rem;
+}
+
+.post + .post {
+  border-top: 2px solid khaki;
+  padding-top: .5rem;
+}
