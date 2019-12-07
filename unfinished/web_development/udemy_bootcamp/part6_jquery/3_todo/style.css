@@ -1,0 +1,43 @@
+.taskList{
+  width: 15rem;
+  margin: 0 1em;
+}
+
+.listTitle{
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tasks{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.input-group{
+  margin: 0;
+}
+
+.completedTask{
+  text-decoration: line-through;
+  color: gray;
+}
+
+.editTask{
+  width: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.deleteTask{
+  width: .2rem;
+  text-align: center;
+  color: transparent;
+  /* display: none; */
+}
+
+.deleteTask:hover{
+  width: 2rem;
+  color: white;
+}

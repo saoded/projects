@@ -1,0 +1,18 @@
+.square{
+  height: 10rem;
+  /* background: red; */
+  border-radius: 1rem;
+}
+
+h1{
+  text-align: center;
+  margin: 0;
+}
+
+.difficulty{
+  background: rgba(255, 255, 255, 1);
+}
+
+.currentDifficulty{
+  background: rgba(255, 255, 255, 0);
+}
