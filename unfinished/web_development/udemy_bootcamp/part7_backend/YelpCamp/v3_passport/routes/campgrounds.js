@@ -60,14 +60,36 @@ router.get("/:id/edit", auth.isLoggedIn, (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      console.log(foundCamp.creator.id);
+      console.log(req.user._id);
       res.render("campgrounds/edit", { camp: foundCamp });
     }
   });
 });
 
+// PUT
+router.put("/:id", auth.isLoggedIn, (req, res) => {
+  Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
+    if (err) {
+      console.log(err)
+    }
+    res.redirect("/campgrounds/" + req.params.id)
+  });
+});
+
 // DELETE
-router.delete("/", auth.isLoggedIn, (req, res)=>{
-  res.send("FUTURE DELETE PAGE!");
+router.delete("/:id", auth.isLoggedIn, (req, res) => {
+  Campground.findByIdAndRemove(req.params.id, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    Comment.deleteMany({ _id: { $in: campgroundRemoved.comments } }, (err) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect("/campgrounds");
+    });
+  })
 });
 
 module.exports = router;
