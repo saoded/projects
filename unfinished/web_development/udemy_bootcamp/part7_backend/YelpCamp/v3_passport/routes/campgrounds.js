@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campground")
+var Comment = require("../models/comment")
 var auth = require("../public/lib/auth-lib");
 
 router.get("/", (req, res) => {
@@ -55,21 +56,20 @@ router.get("/:id", (req, res) => {
 });
 
 // UPDATE
-router.get("/:id/edit", auth.isLoggedIn, (req, res) => {
+router.get("/:id/edit", auth.isOwnerLoggedIn, (req, res) => {
   Campground.findById(req.params.id, (err, foundCamp) => {
     if (err) {
-      console.log(err);
-    } else {
-      console.log(foundCamp.creator.id);
-      console.log(req.user._id);
-      res.render("campgrounds/edit", { camp: foundCamp });
+      console.log(err)
+      res.redirect("/campgrounds");
+      return;
     }
+    res.render("campgrounds/edit", { camp: foundCamp });
   });
 });
 
 // PUT
-router.put("/:id", auth.isLoggedIn, (req, res) => {
-  Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
+router.put("/:id", auth.isOwnerLoggedIn, (req, res) => {
+  Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCamp) => {
     if (err) {
       console.log(err)
     }
@@ -78,17 +78,17 @@ router.put("/:id", auth.isLoggedIn, (req, res) => {
 });
 
 // DELETE
-router.delete("/:id", auth.isLoggedIn, (req, res) => {
-  Campground.findByIdAndRemove(req.params.id, (err) => {
+router.delete("/:id", auth.isOwnerLoggedIn, (req, res) => {
+  Campground.findByIdAndRemove(req.params.id, (err, removedCamp) => {
     if (err) {
       console.log(err);
     }
-    Comment.deleteMany({ _id: { $in: campgroundRemoved.comments } }, (err) => {
+    Comment.deleteMany({ _id: { $in: removedCamp.comments } }, (err) => {
       if (err) {
         console.log(err);
       }
-      res.redirect("/campgrounds");
     });
+    res.redirect("/campgrounds");
   })
 });
 
