@@ -1,0 +1,15 @@
+Prerequisites:
+- Heroku installed
+
+STEP 0 - have a Git repo
+- git init
+- git add <STUFF>
+- git commit -m "initial commit"
+
+STEP 1 - setup Heroku
+- add a "start" script to package.json
+- heroku create
+- git remote -v
+
+STEP 2 - Deploy
+- git push heroku master
