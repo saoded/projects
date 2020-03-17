@@ -1,8 +1,16 @@
 #!/bin/bash
 
+while getopts hml: opt; do 
+  case "${opt}" in 
+    h) cat ./helpdoc && exit 0;;
+    m) minimal=true;;
+    l) local=true;;
+  esac 
+done 
+
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit
 fi
 
-./install_software
+#./install_software
