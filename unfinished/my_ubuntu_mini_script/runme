@@ -13,4 +13,5 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+./optimize_mirror
 #./install_software
