@@ -1,0 +1,5 @@
+apt install python3-pip
+pip3 install apt-mirror-updater
+apt-mirror-updater --auto-change-mirror
+pip3 uninstall apt-mirror-updater
+apt remove --purge python3-pip

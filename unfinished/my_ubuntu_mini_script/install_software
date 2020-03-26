@@ -10,4 +10,4 @@ networking= "transmission firefox"
 app_suite= "$xfce_env $media $networking compton suckless-tools pcmanfm qalculate"
 gui_utils= "$app_suite lxpolkit gksu xbacklight pavucontrol gmrun gparted file-roller vim-gtk synaptic"
 
-$install_command $tui_utils $renderer $wm $gui_utils $media $networking
+$install_command $tui_utils $wm
