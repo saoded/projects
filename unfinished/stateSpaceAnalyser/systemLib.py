@@ -47,23 +47,47 @@ def determine_stability(As):
     return isStable
 
 
-def draw_nullclines(sys, x1_start=-1, x1_end=1, x2_start=-1, x2_end=1):
+def find_nullclines(sys, x1_start=-1, x1_end=1, x2_start=-1, x2_end=1):
     global x
     # solutions = list(map(lambda dx: sm.solve(sm.Eq(dx, 0)), sys))
     solutions = [sm.solve(sm.Eq(dx, 0)) for dx in sys]
     print("solutions:")
     print(solutions)
-    # solutions is an annoying data structure. It's a list with N sublists (when N is the dimention)
+    return solutions
+
+def draw_nullclines(solutions, x1_start=-1, x1_end=1, x2_start=-1, x2_end=1):
+    # solutions is an annoying data structure. It's a list with N sublists (when N is the dimension)
     # each sublist is composed of M 1-element dictionaries, when M is the number of nullclines for the respective coordinate
     # each dictionary has one key, which is the solving coordinate, and one value, which is the slution using this coordinate.
     # e.g. if x1=log(x2) || x2=x1^2 solves x1's equation, and x1=2 || x1=-2 solves x2's equation, then solutions will be:
     # [[{x1: log(x2)}, {x2: x1**2}], [{x1: 2}, {x1: -2}]]
+    p = None
     for i in range(len(solutions)):
         c = 'b' if i==0 else 'r'
         for solution in solutions[i]:
-            sm.plot_implicit(sm.Eq(list(solution.keys())[0],list(solution.values())[0]), line_color=c)
+            print(sm.Eq(list(solution.keys())[0],list(solution.values())[0]))
+            pi = sm.plot_implicit(sm.Eq(list(solution.keys())[0],list(solution.values())[0]), line_color=c)
+            if p:
+                p.extend(pi)
+            else:
+                p = pi
     # sm.plot_implicit(sm.Eq(x1, 2), color='b')
-    # plt.show()
+
+    # quiverplot
+    # define a grid and compute direction at each point
+    _x1 = np.linspace(x1_start, x1_end, 20)
+    _x2 = np.linspace(x2_start, x2_end, 20)
+
+    X1 , X2  = np.meshgrid(_x1, _x2)                    # create a grid
+    DX1, DX2 = sys([X1, X2])                        # compute growth rate on the grid
+    M = (np.hypot(DX1, DX2))                        # norm growth rate 
+    M[ M == 0] = 1.                                 # avoid zero division errors 
+    DX1 /= M                                        # normalize each arrows
+    DX2 /= M
+
+    p.exted(quiver(X1, X2, DX1, DX2, M, pivot='mid'))
+
+    p.show()
 
 
 def force_system_to_contain_all_coordinates(sys):
@@ -102,4 +126,5 @@ for A in As:
 isStable = determine_stability(As)
 print("Determine Stability:")
 print(isStable)
-draw_nullclines(sys)
+ncls = find_nullclines(sys)
+draw_nullclines(ncls)

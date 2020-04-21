@@ -1,0 +1,7 @@
+{
+  "name": "no-framework",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "custom"
+}

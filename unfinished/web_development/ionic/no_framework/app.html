@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic ionic from CDN -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ion-app>
+        <ion-split-pane when="sm" content-id="main-content">
+            <ion-menu content-id="main-content">
+                <ion-header>
+                    <ion-toolbar color="primary">
+                        <ion-title>Menu</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+
+                <ion-content>
+                    <ion-list>
+                        <ion-list-header>
+                            Navigate
+                        </ion-list-header>
+                        <ion-menu-toggle auto-hide="false">
+                            <ion-item button>
+                                <ion-icon slot="start" name='home'></ion-icon>
+                                <ion-label>
+                                    Home
+                                </ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                    </ion-list>
+                </ion-content>
+            </ion-menu>
+
+            <div class="ion-page" id="main-content">
+                <ion-header>
+                    <ion-toolbar>
+                        <ion-buttons slot="start">
+                            <ion-menu-toggle>
+                                <ion-button>
+                                    <ion-icon slot="icon-only" name="menu"></ion-icon>
+                                </ion-button>
+                            </ion-menu-toggle>
+                        </ion-buttons>
+                        <ion-title>Header</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+                <ion-content class="ion-padding">
+                    <ion-list>
+                        <ion-item lines="full">
+                          <ion-icon slot="start" name="moon"></ion-icon>
+                          <ion-label>
+                            Toggle Dark Theme
+                          </ion-label>
+                          <ion-toggle id="themeToggle" slot="end"></ion-toggle>
+                        </ion-item>
+                      </ion-list>
+                    <h1>Main Content</h1>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="ion-padding">
+                                <div>
+                                    padding
+                                </div>
+                            </ion-col>
+                            <ion-col class="ion-padding-top">
+                                <div>
+                                    padding-top
+                                </div>
+                            </ion-col>
+                            <ion-col class="ion-padding-start">
+                                <div>
+                                    padding-start
+                                </div>
+                            </ion-col>
+                            <ion-col class="ion-padding-end">
+                                <div>
+                                    padding-end
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="ion-padding-bottom">
+                                <div>
+                                    padding-bottom
+                                </div>
+                            </ion-col>
+                            <ion-col class="ion-padding-vertical">
+                                <div>
+                                    padding-vertical
+                                </div>
+                            </ion-col>
+                            <ion-col class="ion-padding-horizontal">
+                                <div>
+                                    padding-horizontal
+                                </div>
+                            </ion-col>
+                            <ion-col class="ion-no-padding">
+                                <div>
+                                    no-padding
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-content>
+            </div>
+
+        </ion-split-pane>
+    </ion-app>
+
+    <!-- ionic icon -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@4.7.4/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@4.7.4/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
