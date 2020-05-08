@@ -44,5 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "devDependencies": {
+    "@ionic/app-scripts": "^3.2.4"
+  }
 }
