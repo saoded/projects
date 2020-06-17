@@ -8,11 +8,19 @@ import { Todo } from '../models/Todo';
   providedIn: 'root'
 })
 export class TodoService {
-  todosUrl:string = 'http://jasonplaceholder.typicode.com/todos';
+  //todosUrl: string = 'http://jasonplaceholder.typicode.com/todos';
 
   constructor(private http: HttpClient) { }
 
-  getTodos():Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.todosUrl);
+  getTodos(): Observable<Todo[]> {
+    //return this.http.get<Todo[]>(this.todosUrl);
+    return new Observable((observer) =>{
+      observer.next([
+        new Todo(1, "one", true),
+        new Todo(),
+        new Todo(2, 'Naomi Jo', false)
+      ]);
+      observer.complete();
+    });
   }
 }
