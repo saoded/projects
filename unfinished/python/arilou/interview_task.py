@@ -1,27 +1,25 @@
-import numpy as np
-from datetime import datetime, timedelta
-from pause import until
-from random import randrange, choice, randint
-from itertools import compress
 import can_module
+from datetime import datetime, timedelta
+from time import sleep
 import threading
 import queue
-from time import sleep
+
+# CONSTANTS
+SLEEP_DELTA = 0.002  # seconds
+RUNTIME = 2  # seconds
+
+# MESSAGE QUEUES
+generator_queue = queue.Queue()
+detector_queue = queue.Queue()
+
 
 # GENERATOR UNIT
-generator_queue = queue.Queue()
-
-
 def generator_func(endtime=datetime.now()+timedelta(seconds=2)):
     while(datetime.now() < endtime):
         generator_queue.put(can_module.generate_can_frame())
 
 
 # DETECTOR UNIT
-detector_queue = queue.Queue()
-SLEEP_DELTA = 0.002  # seconds
-
-
 def detector_func(endtime=datetime.now()+timedelta(seconds=2)):
     while(datetime.now() < endtime):
         while(not generator_queue.qsize()):
@@ -46,7 +44,7 @@ def reporter_func(endtime=datetime.now()+timedelta(seconds=2)):
 
 
 if __name__ == "__main__":
-    runtime = timedelta(seconds=2)
+    runtime = timedelta(seconds=RUNTIME)
     endtime = datetime.now() + runtime
 
     generator = threading.Thread(target=generator_func, args=(endtime,))
