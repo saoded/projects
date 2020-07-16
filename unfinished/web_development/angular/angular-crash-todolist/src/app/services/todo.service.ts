@@ -14,7 +14,7 @@ export class TodoService {
 
   getTodos(): Observable<Todo[]> {
     //return this.http.get<Todo[]>(this.todosUrl);
-    return new Observable((observer) =>{
+    return new Observable((observer) => {
       observer.next([
         new Todo(1, "one", true),
         new Todo(),
@@ -22,5 +22,15 @@ export class TodoService {
       ]);
       observer.complete();
     });
+  }
+
+  /*toggleCompleted(todo: Todo) :Observable<any>{
+    return this.http.put(url, todo, httpOptions);
+  }*/
+  /*deleteTodo(todo: Todo): Observable<Todo>{
+    this.http.delete<Todo>(url, httpOptions);
+  }*/
+  AddTodo(todo: Todo)/*: Observable<Todo>*/ {
+    //return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
   }
 }
