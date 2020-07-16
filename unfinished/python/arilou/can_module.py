@@ -108,6 +108,7 @@ def detect_can_frame(frame):
         databytes.append(data % 256)
         dataValidity |= databytes[i] in FRAME_META[frame_id].databytes
         data >>= 8
+    print(databytes)
     validity |= 0b100 * dataValidity
     FRAME_META[frame_id].databytes = databytes
 

@@ -43,12 +43,12 @@ def reporter_func(endtime=datetime.now()+timedelta(seconds=2)):
 
 
 if __name__ == "__main__":
-    runtime = timedelta(seconds=2)
+    runtime = timedelta(seconds=10)
     endtime = datetime.now() + runtime
 
-    generator = threading.Thread(target=generator_func)
-    detector = threading.Thread(target=detector_func)
-    reporter = threading.Thread(target=reporter_func)
+    generator = threading.Thread(target=generator_func, args=(endtime,))
+    detector = threading.Thread(target=detector_func, args=(endtime,))
+    reporter = threading.Thread(target=reporter_func, args=(endtime,))
 
     generator.start()
     detector.start()
