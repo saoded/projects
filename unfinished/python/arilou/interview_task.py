@@ -32,18 +32,21 @@ def detector_func(endtime=datetime.now()+timedelta(seconds=2)):
 # REPORTER UNIT
 def reporter_func(endtime=datetime.now()+timedelta(seconds=2)):
     # OPEN FILE FOR WRITING
+    fobj = open("report", "w")
     # RUN THREADLOOP
     while(datetime.now() < endtime):
         while(not detector_queue.qsize()):
             sleep(SLEEP_DELTA)
         report_str = can_module.report(detector_queue.get())
         # APPEND TO FILE
-        print(report_str)
+        fobj.write(report_str)
+        # print(report_str)
     # CLOSE FILE
+    fobj.close()
 
 
 if __name__ == "__main__":
-    runtime = timedelta(seconds=10)
+    runtime = timedelta(seconds=2)
     endtime = datetime.now() + runtime
 
     generator = threading.Thread(target=generator_func, args=(endtime,))

@@ -108,7 +108,7 @@ def detect_can_frame(frame):
         databytes.append(data % 256)
         dataValidity |= databytes[i] in FRAME_META[frame_id].databytes
         data >>= 8
-    print(databytes)
+    # print(databytes)
     validity |= 0b100 * dataValidity
     FRAME_META[frame_id].databytes = databytes
 
@@ -132,7 +132,7 @@ def report(af):
     print_str = str(af.timestamp) + FIELD_DELIMETER + \
                 hex(af.frame) + FIELD_DELIMETER + \
                 ("Invalid" if bool(af.validity) else "Valid") + FIELD_DELIMETER + \
-                str(INVALIDITY_MESSAGES[selectors(af.validity)])
+                str(INVALIDITY_MESSAGES[selectors(af.validity)]) + "\n"
     return print_str
 
 
