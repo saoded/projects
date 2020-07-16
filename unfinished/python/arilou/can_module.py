@@ -16,6 +16,7 @@ class metadata:
 
 
 TIMESTAMP_INIT = datetime(2000, 1, 1)
+# GLOBAL DATA STORAGE
 FRAME_META = {0x100: metadata(TIMESTAMP_INIT, 0, []),
               0x200: metadata(TIMESTAMP_INIT, 0, []),
               0x300: metadata(TIMESTAMP_INIT, 0, [])}
@@ -69,6 +70,7 @@ MIN_FRAME_LEN = PRE_DATA_LEN + POST_DATA_LEN
 # FRAME_GEN_TIMES = [TIMESTAMP_INIT, TIMESTAMP_INIT, TIMESTAMP_INIT]
 
 
+# DATA STRUCTURE FOR REPORTER
 class analysed_frame:
     def __init__(self, frame, timestamp, frame_id, validity):
         self.frame = frame
@@ -96,12 +98,11 @@ def detect_can_frame(frame):
     validity |= 0b010 * (FRAME_META[frame_id].length == frame_len)
     FRAME_META[frame_id].length = frame_len
 
-    # VALIDATE DATA
-    # dlc_shift = frame_len - PRE_DATA_LEN
-    # dlc = (frame >> dlc_shift) % 16
+    # EXTRACT DATA
     data_len = (frame_len - MIN_FRAME_LEN)  # Bits
     dlc = data_len >> 3  # Bytes
     data = (frame >> POST_DATA_LEN)
+    # VALIDATE DATA
     dataValidity = False
     databytes = []
     for i in range(dlc):

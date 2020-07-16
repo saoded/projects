@@ -47,15 +47,19 @@ if __name__ == "__main__":
     runtime = timedelta(seconds=RUNTIME)
     endtime = datetime.now() + runtime
 
+    # CREATE THREADS
     generator = threading.Thread(target=generator_func, args=(endtime,))
     detector = threading.Thread(target=detector_func, args=(endtime,))
     reporter = threading.Thread(target=reporter_func, args=(endtime,))
 
+    # START THREADS
     generator.start()
     detector.start()
     reporter.start()
 
+    # WAIT FOR THREADS TO FINISH
     generator.join()
     detector.join()
     reporter.join()
-# print(FRAME_GEN_TIMES)
+    
+    # print(list(can_module.FRAME_META.keys()))
